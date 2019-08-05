@@ -24,7 +24,7 @@ name: "Header"
     justify-content: space-between;
     .logo{
         img{
-            width: 20%;
+            width: 13%;
             height: 100%;
             object-fit: contain;
         }

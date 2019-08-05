@@ -20,10 +20,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .container {
-    max-width: 992px;
-    margin: 0 auto;
-  }
   #app {
     width: 100%;
   }

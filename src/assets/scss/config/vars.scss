@@ -1,0 +1,35 @@
+
+//BreakPoints
+$screen-md-min: "(min-width:992px)";
+$screen-md-max: "(max-width:991px)";
+
+$screen-sm-min: "(min-width:768px)";
+$screen-sm-max: "(max-width:767px)";
+
+$screen-xs-min: "(min-width:480px)";
+$screen-xs-max: "(max-width:479px)";
+
+$screen-tablet-break: "(max-width:991px and min-width: 768px)";
+$screen-mobile-break: "(max-width:767px and min-width: 480px)";
+
+
+//fontFamilies
+$fontPacifico: 'Pacifico', cursive;
+$fontShadowsIntoLight: 'Shadows Into Light', cursive;
+
+//baseFontSizes
+
+
+//baseColors
+$baseDarkColor: #464646;
+$baseRedColor: #820d0d;
+$baseYellowColor: #cf8030;
+
+//baseFontSize
+
+$baseTitleFontSize: 20px;
+$baseTitleFontSize-xs: 16px;
+
+$baseDescriptionFontSize: 16px;
+$baseDescriptionFontSize-xs: 14px;
+
