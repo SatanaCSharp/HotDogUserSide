@@ -24,12 +24,13 @@ name: "Header"
     justify-content: space-between;
     .logo{
         img{
-            width: 50px;
-            height: 50px;
+            width: 13%;
+            height: 100%;
+            object-fit: contain;
         }
     }
     .nav {
-        width: 100%;
+        width: 20%;
         display: flex;
         justify-content: space-between;
         &__menu-item {
