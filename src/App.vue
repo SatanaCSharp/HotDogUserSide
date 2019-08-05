@@ -9,6 +9,7 @@
 <script>
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
+import "./assets/scss/imports/global.scss";
 export default {
   name: 'app',
   components: {
@@ -18,9 +19,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-  #app {
-    width: 100%;
-  }
-</style>
