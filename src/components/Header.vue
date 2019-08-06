@@ -15,11 +15,8 @@
 import "../assets/scss/imports/header.scss"
 export default {
     name: "Header",
+    methods:{
+    }
 }
 </script>
-
-<style lang="scss" scoped>
-
-
-</style>
 
