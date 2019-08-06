@@ -6,8 +6,8 @@
         <div class="spice-list__item" :_id = "spice._id" >
             <h2>{{spice.name}}</h2>
             <div class="action-buttons">
-                <router-link class="button__update" to="/update/spices/">Update</router-link>
-                <a href="/spices" class="button__delete">Delete</a>
+                <router-link class="button__update" :to = updateSpiceRoute(spice._id)>Update</router-link>
+                <div v-on:click="deleteSpice(spice._id)" class="button__delete">Delete</div>
             </div>
         </div>
     </section>
@@ -17,22 +17,28 @@
 <script>
 import "../../assets/scss/imports/spices_list.scss";
 import BreadCrumbs from "../mixins/BreadCrumbs.vue";
-import SpiceUpdate from "./SpiceUpdate.vue"
+import axios from 'axios';
 export default {
     name:"SpicesList",
     components: {
-        BreadCrumbs
+        BreadCrumbs,
     },
     data:() => {
         return {
-            spices:[]
+            spices:[],
         }
     },
     methods:{
         fetchSpices: async function() {
-            const spicesRequest = await fetch(`https://api-hot-dogs.herokuapp.com/v1/spices`);
-            const spices = await spicesRequest.json();
-            this.spices = await spices;
+            const spicesRequest = await axios.get(`${process.env.VUE_APP_API_BASE_URL}spices`);
+            this.spices = await spicesRequest.data;
+        },
+        updateSpiceRoute: function (id) {
+            return "/update/spices/" + id;
+        },
+        deleteSpice: async function(id) {
+            const spicesRequest = await axios.delete(`${process.env.VUE_APP_API_BASE_URL}spices/${id}`);
+            this.spices = await spicesRequest.data;
         }
     },
     mounted: function() {

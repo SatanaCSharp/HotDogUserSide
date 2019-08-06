@@ -16,6 +16,7 @@
 <script>
 import "../../assets/scss/imports/spices_create.scss";
 import BreadCrumbs from "../mixins/BreadCrumbs.vue";
+import axios from 'axios';
 export default {
     name:"SpicesCreate",
     components: {
@@ -28,15 +29,7 @@ export default {
     },
     methods: {
         sendForm: function() {
-             fetch(`${process.env.VUE_APP_API_BASE_URL}spices`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
-                body: JSON.stringify({
-                    name: this.name
-                })
-            });
+            axios.post(`${process.env.VUE_APP_API_BASE_URL}spices`,{name: this.name});
         },
     }
 
