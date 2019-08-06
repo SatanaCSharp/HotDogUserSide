@@ -11,7 +11,7 @@
   }
 
   @media ($screen-sm-max) {
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
   }
 
@@ -25,7 +25,13 @@
     display: flex;
     justify-content: space-between;
     @media ($screen-sm-min) {
-      width: 40%;
+      width: 30%;
+    }
+    @media ($screen-mobile-break) {
+      width: 60%;
+    }
+    @media ($screen-xs-max) {
+      width: 100%;
     }
     svg {
       @media ($screen-sm-min) {
