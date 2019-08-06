@@ -4,6 +4,12 @@ import HotDogsList from '../components/hot_dogs/HotDogsList';
 import HotDogShow from '../components/hot_dogs/HotDogShow';
 import HotDogCreate from '../components/hot_dogs/HotDogCreate';
 import HotDogUpdate from '../components/hot_dogs/HotDogUpdate';
+import StuffList from '../components/stuff/StuffList';
+import StuffCreate from '../components/stuff/StuffCreate';
+import StuffUpdate from '../components/stuff/StuffUpdate';
+import SpicesList from '../components/spices/SpicesList';
+import SpicesCreate from '../components/spices/SpicesCreate';
+import SpicesUpdate from '../components/spices/SpicesUpdate';
 
 Vue.use(Router);
 
@@ -11,7 +17,7 @@ export default new Router({
     mode: 'history',
     routes: [
     {
-        path: '/',
+        path: '/hot-dogs/',
         name: 'HotDogsList',
         component: HotDogsList,
     },
@@ -29,6 +35,36 @@ export default new Router({
         path: '/update/hot-dog/:id',
         name: 'HotDogUpdate',
         component: HotDogUpdate,
+    },
+    {
+        path: '/stuff',
+        name: 'StuffList',
+        component: StuffList,
+    },
+    {
+        path: '/create/stuff',
+        name: 'StuffCreate',
+        component: StuffCreate,
+    },
+    {
+        path: '/update/stuff/:id',
+        name: 'StuffUpdate',
+        component: StuffUpdate,
+    },
+    {
+        path: '/spices',
+        name: 'SpicesList',
+        component: SpicesList,
+    },
+    {
+        path: '/create/spices',
+        name: 'SpicesCreate',
+        component: SpicesCreate,
+    },
+    {
+        path: '/update/spices/:id',
+        name: 'SpicesUpdate',
+        component: SpicesUpdate,
     },
   ]
 });

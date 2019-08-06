@@ -1,16 +1,16 @@
 
 //BreakPoints
-$screen-md-min: "(min-width:992px)";
-$screen-md-max: "(max-width:991px)";
+$screen-md-min: "min-width:992px";
+$screen-md-max: "max-width:991px";
 
-$screen-sm-min: "(min-width:768px)";
-$screen-sm-max: "(max-width:767px)";
+$screen-sm-min: "min-width:768px";
+$screen-sm-max: "max-width:767px";
 
-$screen-xs-min: "(min-width:480px)";
-$screen-xs-max: "(max-width:479px)";
+$screen-xs-min: "min-width:480px";
+$screen-xs-max: "max-width:479px";
 
-$screen-tablet-break: "(max-width:991px and min-width: 768px)";
-$screen-mobile-break: "(max-width:767px and min-width: 480px)";
+$screen-tablet-break: "max-width:991px) and (min-width: 768px";
+$screen-mobile-break: "max-width:767px) and (min-width: 480px";
 
 
 //fontFamilies
@@ -26,6 +26,8 @@ $baseRedColor: #820d0d;
 $baseYellowColor: #cf8030;
 
 //baseFontSize
+$baseNavFontSize: 20px;
+$baseNavFontSize-xs: 16px;
 
 $baseTitleFontSize: 20px;
 $baseTitleFontSize-xs: 16px;
