@@ -16,13 +16,12 @@
         Copyright 2019 by Yurii Horchuk. All Rights Reserved.
    </section>
    </footer>
- 
 </div>
 </template>
 
 <script>
 import "../assets/scss/imports/footer.scss";
 export default {
-name: "Footer"
+    name: "Footer"
 }
 </script>

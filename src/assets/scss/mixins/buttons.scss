@@ -1,0 +1,41 @@
+
+@mixin createBtn() {
+    padding: 5px 20px;
+    border: 1px solid $baseYellowColor;
+    border-radius: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    color: $baseYellowColor;
+    text-align: center;
+    font-family: $fontShadowsIntoLight;
+    &:hover {
+        color: $baseRedColor;
+        border: 1px solid $baseRedColor
+    }
+}
+
+@mixin updateBtn() {
+    font-size: 16px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    color: $baseYellowColor;
+    text-align: center;
+    font-family: $fontShadowsIntoLight;
+    &:hover {
+        color: $baseDarkColor;
+        text-decoration: underline;
+    }
+}
+@mixin deleteBtn() {
+    font-size: 16px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    color: $baseRedColor;
+    text-align: center;
+    font-family: $fontShadowsIntoLight;
+    &:hover {
+        color: $baseDarkColor;
+        text-decoration: underline;
+    }
+}
