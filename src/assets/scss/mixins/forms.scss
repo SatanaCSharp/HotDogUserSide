@@ -1,0 +1,22 @@
+
+
+@mixin input() {
+    width: 99%;
+    padding: 5px;
+    margin: 15px 0;
+    color: $baseYellowColor;
+    font-family: "Shadows Into Light", cursive;
+    font-size: 16px;
+    letter-spacing: 1px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: $baseInputBg;
+
+}
+@mixin label() {
+    width: 100%;
+    margin: 15px 0 0 0;
+    color: $baseDarkColor;
+    font-family: "Shadows Into Light", cursive;
+}
