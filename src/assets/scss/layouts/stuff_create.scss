@@ -1,0 +1,13 @@
+.button__create {
+  @include createBtn();
+}
+.stuff-create-wrapper {
+  .form {
+    &__label {
+      @include label();
+    }
+    &__input {
+      @include input();
+    }
+  }
+}

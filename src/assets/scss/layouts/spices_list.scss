@@ -24,11 +24,5 @@
             display: inline-flex;
             @include deleteBtn();
         }
-        .set-id {
-            display: inline-flex;
-        }
     }
-}
-.spices-update-wrapper{
-    display: none;
 }
