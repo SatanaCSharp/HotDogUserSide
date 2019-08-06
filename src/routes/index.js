@@ -17,7 +17,7 @@ export default new Router({
     mode: 'history',
     routes: [
     {
-        path: '/hot-dogs/',
+        path: '/',
         name: 'HotDogsList',
         component: HotDogsList,
     },
