@@ -1,0 +1,82 @@
+.button__create{
+    @include createBtn();
+}
+
+.hot-dogs-list {
+    display: flex;
+    flex-direction: column;
+    &__item {
+        width: 100%;
+        display: inline-flex;
+        @media ($screen-sm-min) {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        @media ($screen-sm-max) {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        &-info {
+            display: inline-flex;
+            position: relative;
+            @media ($screen-sm-min) {
+                width: 25%;
+            }
+            @media ($screen-mobile-break) {
+                width: 40%
+            }
+            @media ($screen-xs-max) {
+                width: 80%
+            }
+            img {
+                height: 100%;
+                width: 80%;
+            }
+            .action-buttons {
+                position: absolute;
+                display: inline-flex;
+                flex-direction: column;
+                right: 0;
+                .button__update {
+                    @include updateBtn();
+                    font-size: 14px;
+                    color: $baseYellowColor;
+                }
+                .button__show {
+                    @include updateBtn();
+                    font-size: 14px;
+                    color: $baseDarkColor;
+                }
+
+                .button__delete {
+                    display: inline-flex;
+                    @include deleteBtn();
+                }
+            }
+        }
+        .title {
+            font-family: $fontDancingScript;
+            color: $baseDarkColor;
+            @media ($screen-sm-min) {
+                width: 25%;
+                font-size: $hotDogsTitleFontSize;
+            }
+            @media ($screen-sm-max) {
+                font-size: $hotDogsTitleFontSize-sm;
+            }
+        }
+        .description {
+            color: $baseYellowColor;
+            font-family: $fontShadowsIntoLight;
+            @media ($screen-sm-min) {
+                width: 25%;
+                font-size: $hotDogsDescriptionFontSize;
+            }
+            @media ($screen-sm-max) {
+                font-size: $hotDogsDescriptionFontSize-sm;
+            }
+        }
+    }
+}

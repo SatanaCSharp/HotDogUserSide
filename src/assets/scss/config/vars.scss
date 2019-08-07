@@ -16,6 +16,7 @@ $screen-mobile-break: "max-width:767px) and (min-width: 480px";
 //fontFamilies
 $fontPacifico: 'Pacifico', cursive;
 $fontShadowsIntoLight: 'Shadows Into Light', cursive;
+$fontDancingScript: 'Dancing Script', cursive;
 
 //baseFontSizes
 
@@ -31,9 +32,14 @@ $baseYellowColor: #cf8030;
 $baseNavFontSize: 16px;
 $baseNavFontSize-xs: 14px;
 
-$baseTitleFontSize: 16px;
-$baseTitleFontSize-xs: 14px;
+$baseTitleFontSize: 20px;
+$baseTitleFontSize-xs: 16px;
 
 $baseDescriptionFontSize: 16px;
 $baseDescriptionFontSize-xs: 14px;
 
+$hotDogsTitleFontSize: 28px;
+$hotDogsTitleFontSize-sm: 20px;
+
+$hotDogsDescriptionFontSize: 20px;
+$hotDogsDescriptionFontSize-sm: 16px;

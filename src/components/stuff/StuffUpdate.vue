@@ -5,7 +5,7 @@
     <section class="stuff-create-wrapper">
         <form id="create-form" class="form form-wrapper">
             <label class="form__label" for="name">Name of stuff</label>
-            <input  class="form__input" v-model="name" id="name" name="name" type="text" :placeholder = "oldName" >
+            <input  class="form__input" v-model="name" id="name" name="name" type="text" >
             <div v-on:click="sendForm()" class="send-form">
                 <a href="/stuff" class="button__create" >Update</a>
             </div>
@@ -27,20 +27,22 @@ export default {
         return {
             name,
             stuffId: '',
-            oldName: ''
         }
     },
     methods: {
         setStuffId: function(id) {
             this.stuffId = id;
         },
+        fetchStuff: async function() {
+            const spicesRequest = await axios.get(`${process.env.VUE_APP_API_BASE_URL}stuff/${this.stuffId}`);
+            this.name = await spicesRequest.data.name;
+        },
         sendForm: function() {
             axios.put(`${process.env.VUE_APP_API_BASE_URL}stuff/${this.stuffId}`,{name: this.name});
         }
     },
-    mounted: async function() {
-        const spicesRequest = await axios.get(`${process.env.VUE_APP_API_BASE_URL}stuff/${this.spiceId}`);
-        this.oldName = await spicesRequest.data.name;
+    mounted: function () {
+        this.fetchStuff();
     }
 }
 </script>

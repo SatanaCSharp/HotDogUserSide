@@ -2,19 +2,25 @@
     @include createBtn();
 }
 .spices-list {
-    width: 60%;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    @media ($screen-xs-min) {
+        width: 60%;
+    }
+    @media ($screen-xs-max) {
+        width: 100%;
+    }
     .spice-list__item {
         width: 70%;
         display: inline-flex;
         justify-content: space-between;
+        align-items: center;
         h2 {
             color: $baseRedColor;
             font-size: $baseTitleFontSize;
-            font-family: $fontPacifico;
+            font-family: $fontDancingScript;
         }
         .button__update {
             @include updateBtn();
