@@ -9,7 +9,8 @@
     <section class="about">
         <h3>About me</h3>
         <p class="description">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur pariatur laboriosam minus deserunt id, nobis modi est ipsum praesentium dolorem, nemo tempora sint possimus alias enim totam qui maiores aperiam.
+            I`m student of Vinnitsia National Technical University, like to travel and enjoy to listening rock-music.
+            Likewise I interested in improvement skills in JS  and it`s frameworks.
         </p>
     </section>
     <section class="copy">

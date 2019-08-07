@@ -1,7 +1,7 @@
 <template>
 <div id="hot-dogs-list">
     <bread-crumbs></bread-crumbs>
-    <router-link class="button__create" to='/create/hot-dog/'>Create</router-link>
+    <router-link class="button__create" to='/create/hot-dogs/'>Create</router-link>
     <section class="hot-dogs-list">
         <div class="hot-dogs-list__item" v-for ="hotDog in hotDogs" :key = "hotDog._id">
             <h3 class="title">{{hotDog.name}}</h3>
