@@ -6,7 +6,7 @@
             <label class="form__label" for="name">Name of stuff</label>
             <input  class="form__input" id="name" v-model="name" name="name" type="text">
             <div v-on:click="sendForm()" class="send-form">
-                <a href="/stuff" class="button__create" >Create</a>
+                <a href="#/stuff" class="button__create" >Create</a>
             </div>
         </form>
     </section>

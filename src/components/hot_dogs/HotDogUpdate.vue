@@ -39,7 +39,7 @@
             </div>
 
             <div v-on:click="sendForm()" class="send-form">
-                <a href="/" class="button__create" >Update</a>
+                <a href="#/" class="button__create" >Update</a>
             </div>
         </form>
     </section>

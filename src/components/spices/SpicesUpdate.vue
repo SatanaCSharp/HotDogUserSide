@@ -7,7 +7,7 @@
             <label class="form__label" for="name">Name of spice</label>
             <input  class="form__input" v-model="name" id="name" name="name" type="text" >
             <div v-on:click="sendForm()" class="send-form">
-                <a href="/spices" class="button__create" >Update</a>
+                <a href="#/spices" class="button__create" >Update</a>
             </div>
         </form>
     </section>
