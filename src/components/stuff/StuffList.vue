@@ -43,6 +43,9 @@ export default {
     },
     mounted: function() {
         this.fetchStuff();
+    },
+    beforeUpdate() {
+        this.fetchStuff();
     }
 }
 </script>
