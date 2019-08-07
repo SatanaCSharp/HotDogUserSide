@@ -22,17 +22,17 @@ export default new Router({
         component: HotDogsList,
     },
     {
-        path: '/show/hot-dog/:id',
+        path: '/show/hot-dogs/:id',
         name: 'HotDogShow',
         component: HotDogShow,
     },
     {
-        path: '/create/hot-dog/',
+        path: '/create/hot-dogs/',
         name: 'HotDogCreate',
         component: HotDogCreate,
     },
     {
-        path: '/update/hot-dog/:id',
+        path: '/update/hot-dogs/:id',
         name: 'HotDogUpdate',
         component: HotDogUpdate,
     },

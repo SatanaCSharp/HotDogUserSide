@@ -1,0 +1,39 @@
+.button__create {
+    @include createBtn();
+}
+.hot-dogs-create-wrapper {
+    .form {
+        &__label {
+            @include label();
+        }
+        &__input {
+            @include input();
+            &-text-area {
+                max-width: 99%;
+                min-height: 120px;
+                max-height: 160px;
+            }
+        }
+        &__checkboxes {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+            margin: 15px 0 0;
+            &-wrapper {
+                display: inline-flex;
+                width: 50%;
+                justify-content: flex-start;
+                margin: 0 0 10px;
+            }
+        }
+        &__radios {
+            @extend .form__checkboxes;
+            margin: 15px 0 15px;
+            &-wrapper {
+                @extend .form__checkboxes-wrapper;
+
+            }
+        }
+    }
+}

@@ -1,0 +1,75 @@
+.button__back {
+    @include createBtn();
+    color: $baseDarkColor;
+    border-color: $baseDarkColor;
+}
+.hot-dog-show {
+    margin: 0 auto;
+    @media ($screen-sm-min) {
+        width: 50%;
+    }
+    @media ($screen-mobile-break) {
+        width: 60%;
+    }
+    @media ($screen-xs-max) {
+        width: 100%;
+    }
+    .title {
+        font-family: $fontDancingScript;
+        color: $baseDarkColor;
+        @media ($screen-sm-min) {
+            font-size: $hotDogsTitleFontSize;
+        }
+        @media ($screen-sm-max) {
+            font-size: $hotDogsTitleFontSize-sm;
+        }
+    }
+    .description {
+        color: $baseYellowColor;
+        font-family: $fontShadowsIntoLight;
+        @media ($screen-sm-min) {
+            font-size: $hotDogsDescriptionFontSize;
+        }
+        @media ($screen-sm-max) {
+            font-size: $hotDogsDescriptionFontSize-sm;
+        }
+    }
+    .form__label {
+        color: $baseDarkColor;
+        font-family: $fontShadowsIntoLight;
+        font-weight: 700;
+        @media ($screen-sm-min) {
+            font-size: 20px;
+        }
+        @media ($screen-sm-max) {
+            font-size: 16px;
+        }
+    }
+    .spices-wrapper {
+        display: inline-flex;
+        &__item {
+            padding: 0 0 0 5px;
+            h5 {
+                color: $baseRedColor;
+                font-weight: 300;
+                font-family: $fontPacifico;
+                @media ($screen-sm-min) {
+                    font-size: 16px;
+                }
+                @media ($screen-sm-max) {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+    .stuff-wrapper {
+        @extend .spices-wrapper;
+        &__item {
+            @extend .spices-wrapper__item;
+            h5 {
+                @extend h5;
+                color: $baseYellowColor;
+            }
+        }
+    }
+}
