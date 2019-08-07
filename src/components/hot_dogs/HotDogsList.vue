@@ -55,6 +55,9 @@ export default {
     },
     mounted: function() {
         this.fetchHotDogs();
+    },
+    beforeUpdate() {
+        this.fetchHotDogs();
     }
 
 }

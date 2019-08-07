@@ -43,6 +43,9 @@ export default {
     },
     mounted: function() {
         this.fetchSpices();
+    },
+    beforeUpdate() {
+        this.fetchSpices();
     }
 }
 </script>

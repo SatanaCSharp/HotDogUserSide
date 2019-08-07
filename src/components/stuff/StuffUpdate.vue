@@ -7,7 +7,7 @@
             <label class="form__label" for="name">Name of stuff</label>
             <input  class="form__input" v-model="name" id="name" name="name" type="text" >
             <div v-on:click="sendForm()" class="send-form">
-                <a href="#/stuff" class="button__create" >Update</a>
+                <router-link class="button__create" to ="/stuff" >Update</router-link>
             </div>
         </form>
     </section>
