@@ -41,11 +41,12 @@ export default {
             this.spices = await spicesRequest.data;
         }
     },
+    beforeMount: function() {
+        this.fetchSpices();
+    },
     mounted: function() {
         this.fetchSpices();
     },
-    beforeUpdate() {
-        this.fetchSpices();
-    }
+
 }
 </script>

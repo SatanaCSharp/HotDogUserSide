@@ -53,12 +53,12 @@ export default {
             this.hotDogs = await hotDogsRequest.data;
         }
     },
+    beforeMount: function() {
+        this.fetchHotDogs();
+    },
     mounted: function() {
         this.fetchHotDogs();
     },
-    beforeUpdate() {
-        this.fetchHotDogs();
-    }
 
 }
 </script>

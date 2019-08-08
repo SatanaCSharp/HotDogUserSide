@@ -41,11 +41,11 @@ export default {
             this.stuff = await stuffRequest.data;
         }
     },
+    beforeMount() {
+        this.fetchStuff();
+    },
     mounted: function() {
         this.fetchStuff();
     },
-    beforeUpdate() {
-        this.fetchStuff();
-    }
 }
 </script>
