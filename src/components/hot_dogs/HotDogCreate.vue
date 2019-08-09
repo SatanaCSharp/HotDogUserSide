@@ -120,10 +120,8 @@ export default {
         this.fetchStuff();
         store.watch(
             (state) => state.hotDogsList,
-            (newHotDogs, oldHotDogs) => {
-                if(newHotDogs.length >= oldHotDogs.length){
-                    store.state.hotDogsList = newHotDogs;
-                }
+            (newHotDogs) => {
+                store.state.hotDogsList = newHotDogs;
                 return store.state.hotDogsList;
             }
         );

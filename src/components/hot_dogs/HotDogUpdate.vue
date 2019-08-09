@@ -2,6 +2,9 @@
 <div id="hot-dogs-update">
     <bread-crumbs></bread-crumbs>
     {{setHotDogId($route.params.id)}}
+    <ul class="errors">
+        <li class="errors__item" v-for="error in errors" :key="error.index">{{ error }} </li>
+    </ul>
      <section class="hot-dogs-create-wrapper">
         <form id="create-form" class="form form-wrapper">
 
@@ -88,6 +91,20 @@ export default {
             this.hotDog = await hotDogRequest.data;
             this.initFormFields(await this.hotDog);
         },
+        validateForm: function() {
+            if(this.name.length <= 5) {
+                this.errors.push('The name of hot-dog has to contain at least 6 symbols!');
+            }
+            if(this.description.length <= 10) {
+                this.errors.push('The description of hot-dog has to contain at least 11 symbols!');
+            }
+            if(this.spicesSelected.length === 0) {
+                this.errors.push('The hot-dog has to contain at least one selected spice!');
+            }
+            if(this.stuffSelected.length === 0) {
+                this.errors.push('The hot-dog has to contain at least one selected stuff!');
+            }
+        },
         initFormFields: function(hotDog) {
             this.name = hotDog.name;
             this.description = hotDog.description;
@@ -99,12 +116,22 @@ export default {
             store.dispatch('executeSetHotDogs', hotDogsResponse.data);
         },
         sendForm: function() {
-            axios.put(`${process.env.VUE_APP_API_BASE_URL}hot-dogs/${this.hotDogId}`,{
-                name: this.name,
-                description: this.description,
-                spices: this.spicesSelected,
-                stuff: [this.stuffSelected]
-            }).then((hotDogsResponse) => this.updateHotDogState(hotDogsResponse));
+            if(this.errors.length === 0) {
+                axios.put(`${process.env.VUE_APP_API_BASE_URL}hot-dogs/${this.hotDogId}`, {
+                    name: this.name,
+                    description: this.description,
+                    spices: this.spicesSelected,
+                    stuff: [this.stuffSelected]
+                }).then((hotDogsResponse) => this.updateHotDogState(hotDogsResponse));
+            }
+        }
+    },
+    beforeRouteLeave: function(to, from, next) {
+        this.validateForm();
+        if(this.errors.length === 0){
+            next(true);
+        } else {
+            next(false);
         }
     },
     mounted: function() {
@@ -113,10 +140,8 @@ export default {
         this.fetchHotDog();
         store.watch(
             (state) => state.hotDogsList,
-            (newHotDogs, oldHotDogs) => {
-                if(oldHotDogs.length >= newHotDogs.length){
-                    store.state.hotDogsList = oldHotDogs;
-                }
+            (newHotDogs) => {
+                store.state.hotDogsList = newHotDogs;
             }
         );
     },

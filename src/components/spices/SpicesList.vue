@@ -18,6 +18,9 @@
 import "../../assets/scss/imports/spices_list.scss";
 import BreadCrumbs from "../mixins/BreadCrumbs.vue";
 import axios from 'axios';
+import {mapState} from 'vuex';
+import store from '../store.js';
+
 export default {
     name:"SpicesList",
     components: {
@@ -32,6 +35,10 @@ export default {
         fetchSpices: async function() {
             const spicesRequest = await axios.get(`${process.env.VUE_APP_API_BASE_URL}spices`);
             this.spices = await spicesRequest.data;
+            this.updateSpicesState(await  spicesRequest.data);
+        },
+        updateSpicesState: function(spicesResponse) {
+            store.dispatch('executeSetSpices', spicesResponse.data);
         },
         updateSpiceRoute: function (id) {
             return "/update/spices/" + id;
@@ -41,11 +48,18 @@ export default {
             this.spices = await spicesRequest.data;
         }
     },
-    beforeMount: function() {
-        this.fetchSpices();
-    },
     mounted: function() {
         this.fetchSpices();
+        store.watch(
+            (state) => state.spices,
+            (newSpices) => {
+                store.state.spices = newSpices;
+                return store.state.spices;
+            }
+        );
+    },
+    computed: {
+        ...mapState(['spices']),
     },
 
 }

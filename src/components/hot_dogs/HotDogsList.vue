@@ -28,6 +28,7 @@ import "../../assets/scss/imports/hot_dogs_list.scss";
 import axios from 'axios';
 import {mapState} from 'vuex';
 import store from '../store.js';
+
 export default {
     name:"HotDogsList",
     components: {
