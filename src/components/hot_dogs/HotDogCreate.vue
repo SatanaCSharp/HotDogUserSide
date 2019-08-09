@@ -1,14 +1,17 @@
 <template>
 <div id="hot-dogs-create">
     <bread-crumbs></bread-crumbs>
-     <section class="hot-dogs-create-wrapper">
+    <ul class="errors">
+        <li class="errors__item" v-for="error in errors" :key="error.index">{{ error }} </li>
+    </ul>
+    <section class="hot-dogs-create-wrapper">
         <form id="create-form" class="form form-wrapper">
 
             <label class="form__label" for="name">Name of hot dog</label>
-            <input  class="form__input" id="name" v-model="name" name="name" type="text">
+            <input  class="form__input" id="name" v-model="name" name="name" type="text" autofocus required minlength="6">
 
             <label class="form__label" for="description">Description of hot dog</label>
-            <textarea v-model="description" id="description" name="description"  class="form__input form__input-text-area">
+            <textarea v-model="description" id="description" name="description"  class="form__input form__input-text-area" required minlength="10">
             </textarea>
             <label class="form__label">Spices</label>
             <div class="form__checkboxes">
@@ -63,7 +66,8 @@ export default {
             spices: [],
             stuff: [],
             spicesSelected:[],
-            stuffSelected:[]
+            stuffSelected:[],
+            errors:[]
         }
     },
     methods: {
@@ -75,16 +79,40 @@ export default {
             const stuffRequest = await axios.get(`${process.env.VUE_APP_API_BASE_URL}stuff`);
             this.stuff = await stuffRequest.data;
         },
-        updateHotDogState: function(hotDogsReponse) {
-            store.dispatch('executeSetHotDogs', hotDogsReponse.data);
+        validateForm: function() {
+          if(this.name.length <= 5) {
+              this.errors.push('The name of hot-dog has to contain at least 6 symbols!');
+          }
+          if(this.description.length <= 10) {
+              this.errors.push('The description of hot-dog has to contain at least 11 symbols!');
+          }
+          if(this.spicesSelected.length === 0) {
+              this.errors.push('The hot-dog has to contain at least one selected spice!');
+          }
+          if(this.stuffSelected.length === 0) {
+              this.errors.push('The hot-dog has to contain at least one selected stuff!');
+          }
+        },
+        updateHotDogState: function(hotDogsResponse) {
+            store.dispatch('executeSetHotDogs', hotDogsResponse.data);
         },
         sendForm: function() {
-            axios.post(`${process.env.VUE_APP_API_BASE_URL}hot-dogs`,{
-                name: this.name,
-                description: this.description,
-                spices: this.spicesSelected,
-                stuff: [this.stuffSelected]
-            }).then((hotDogsReponse) => this.updateHotDogState(hotDogsReponse));
+            if(this.errors.length === 0){
+                axios.post(`${process.env.VUE_APP_API_BASE_URL}hot-dogs`,{
+                    name: this.name,
+                    description: this.description,
+                    spices: this.spicesSelected,
+                    stuff: [this.stuffSelected]
+                }).then((hotDogsResponse) => this.updateHotDogState(hotDogsResponse));
+            }
+        }
+    },
+    beforeRouteLeave: function(to, from, next) {
+        this.validateForm();
+        if(this.errors.length === 0){
+            next(true);
+        } else {
+            next(false);
         }
     },
     mounted: function() {
@@ -93,9 +121,10 @@ export default {
         store.watch(
             (state) => state.hotDogsList,
             (newHotDogs, oldHotDogs) => {
-                if(oldHotDogs.leght >= newHotDogs.leght){
-                    store.state.hotDogsList = oldHotDogs;
+                if(newHotDogs.length >= oldHotDogs.length){
+                    store.state.hotDogsList = newHotDogs;
                 }
+                return store.state.hotDogsList;
             }
         );
     },

@@ -24,3 +24,23 @@
     }
 
 }
+.errors {
+    width: 80%;
+    top: 10%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    &__item {
+        width: 100%;
+        margin: 15px 0 0;
+        padding: 10px;
+        background-color: #de5454;
+        color: #ffffff;
+        font-size: 20px;
+        font-family: $fontDancingScript;
+        letter-spacing: 1px;
+        text-align: center;
+        border-radius: 5px;
+    }
+}

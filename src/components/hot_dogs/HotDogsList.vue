@@ -44,8 +44,8 @@ export default {
             this.hotDogs = await hotDogsRequest.data;
             this.updateHotDogState(await hotDogsRequest.data);
         },
-        updateHotDogState: function(hotDogsReponse) {
-            store.dispatch('executeSetHotDogs', hotDogsReponse);
+        updateHotDogState: function(hotDogsResponse) {
+            store.dispatch('executeSetHotDogs', hotDogsResponse);
         },
         updateHotDogsRoute: function (id) {
             return "/update/hot-dogs/" + id;
@@ -62,11 +62,9 @@ export default {
         this.fetchHotDogs();
         store.watch(
             (state) => state.hotDogsList,
-            (newHotDogs, oldHotDogs) => {
-                 if(oldHotDogs.leght >= newHotDogs.leght){
-                    store.state.hotDogsList = oldHotDogs;
-                }
+            (newHotDogs) => {
                 this.hotDogs = newHotDogs;
+                return store.state.hotDogsList;
             }
         );
     },

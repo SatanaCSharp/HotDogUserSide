@@ -95,8 +95,8 @@ export default {
             this.stuffSelected = hotDog.stuff[0];
 
         },
-        updateHotDogState: function(hotDogsReponse) {
-            store.dispatch('executeSetHotDogs', hotDogsReponse.data);
+        updateHotDogState: function(hotDogsResponse) {
+            store.dispatch('executeSetHotDogs', hotDogsResponse.data);
         },
         sendForm: function() {
             axios.put(`${process.env.VUE_APP_API_BASE_URL}hot-dogs/${this.hotDogId}`,{
@@ -104,7 +104,7 @@ export default {
                 description: this.description,
                 spices: this.spicesSelected,
                 stuff: [this.stuffSelected]
-            }).then((hotDogsReponse) => this.updateHotDogState(hotDogsReponse));
+            }).then((hotDogsResponse) => this.updateHotDogState(hotDogsResponse));
         }
     },
     mounted: function() {
@@ -114,7 +114,7 @@ export default {
         store.watch(
             (state) => state.hotDogsList,
             (newHotDogs, oldHotDogs) => {
-                if(oldHotDogs.leght >= newHotDogs.leght){
+                if(oldHotDogs.length >= newHotDogs.length){
                     store.state.hotDogsList = oldHotDogs;
                 }
             }
