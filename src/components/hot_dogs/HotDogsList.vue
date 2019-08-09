@@ -10,7 +10,6 @@
                 <div class="action-buttons">
                     <router-link class="button__update" :to = updateHotDogsRoute(hotDog._id)>Update</router-link>
                     <router-link class="button__show" :to = showHotDogsRoute(hotDog._id)>Show</router-link>
-
                     <div v-on:click="deleteHotDog(hotDog._id)" class="button__delete">Delete</div>
                 </div>
             </div>
@@ -27,10 +26,12 @@
 import BreadCrumbs from "../mixins/BreadCrumbs.vue";
 import "../../assets/scss/imports/hot_dogs_list.scss";
 import axios from 'axios';
+import {mapState} from 'vuex';
+import store from '../store.js';
 export default {
     name:"HotDogsList",
     components: {
-        BreadCrumbs,
+        BreadCrumbs
     },
     data: function(){
         return {
@@ -41,6 +42,10 @@ export default {
         fetchHotDogs: async function() {
             const hotDogsRequest = await axios.get(`${process.env.VUE_APP_API_BASE_URL}hot-dogs`);
             this.hotDogs = await hotDogsRequest.data;
+            this.updateHotDogState(await hotDogsRequest.data);
+        },
+        updateHotDogState: function(hotDogsReponse) {
+            store.dispatch('executeSetHotDogs', hotDogsReponse);
         },
         updateHotDogsRoute: function (id) {
             return "/update/hot-dogs/" + id;
@@ -53,11 +58,20 @@ export default {
             this.hotDogs = await hotDogsRequest.data;
         }
     },
-    beforeMount: function() {
-        this.fetchHotDogs();
-    },
     mounted: function() {
         this.fetchHotDogs();
+        store.watch(
+            (state) => state.hotDogsList,
+            (newHotDogs, oldHotDogs) => {
+                 if(oldHotDogs.leght >= newHotDogs.leght){
+                    store.state.hotDogsList = oldHotDogs;
+                }
+                this.hotDogs = newHotDogs;
+            }
+        );
+    },
+    computed: {
+        ...mapState(['hotDogsList']),
     },
 
 }

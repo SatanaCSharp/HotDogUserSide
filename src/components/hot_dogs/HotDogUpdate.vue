@@ -50,6 +50,10 @@
 import BreadCrumbs from "../mixins/BreadCrumbs.vue";
 import "../../assets/scss/imports/hot_dogs_list.scss";
 import axios from 'axios';
+
+import {mapState} from 'vuex';
+import store from '../store.js';
+
 export default {
     name: "HotDogUpdate",
     components: {
@@ -91,20 +95,33 @@ export default {
             this.stuffSelected = hotDog.stuff[0];
 
         },
+        updateHotDogState: function(hotDogsReponse) {
+            store.dispatch('executeSetHotDogs', hotDogsReponse.data);
+        },
         sendForm: function() {
             axios.put(`${process.env.VUE_APP_API_BASE_URL}hot-dogs/${this.hotDogId}`,{
                 name: this.name,
                 description: this.description,
                 spices: this.spicesSelected,
                 stuff: [this.stuffSelected]
-            });
+            }).then((hotDogsReponse) => this.updateHotDogState(hotDogsReponse));
         }
     },
     mounted: function() {
         this.fetchStuff();
         this.fetchSpices();
         this.fetchHotDog();
+        store.watch(
+            (state) => state.hotDogsList,
+            (newHotDogs, oldHotDogs) => {
+                if(oldHotDogs.leght >= newHotDogs.leght){
+                    store.state.hotDogsList = oldHotDogs;
+                }
+            }
+        );
     },
-
+    computed: {
+        ...mapState(['hotDogsList']),
+    },
 }
 </script>

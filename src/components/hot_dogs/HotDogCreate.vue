@@ -48,10 +48,13 @@
 import BreadCrumbs from "../mixins/BreadCrumbs.vue";
 import "../../assets/scss/imports/hot_dogs_create.scss";
 import axios from 'axios';
+import {mapState} from 'vuex';
+import store from '../store.js';
 export default {
     name:"HotDogsCreate",
     components: {
         BreadCrumbs,
+
     },
     data: function() {
         return {
@@ -60,17 +63,20 @@ export default {
             spices: [],
             stuff: [],
             spicesSelected:[],
-            stuffSelected:[],
+            stuffSelected:[]
         }
     },
     methods: {
         fetchSpices: async function() {
-        const spicesRequest = await axios.get(`${process.env.VUE_APP_API_BASE_URL}spices`);
+            const spicesRequest = await axios.get(`${process.env.VUE_APP_API_BASE_URL}spices`);
             this.spices = await spicesRequest.data;
         },
         fetchStuff: async function() {
             const stuffRequest = await axios.get(`${process.env.VUE_APP_API_BASE_URL}stuff`);
             this.stuff = await stuffRequest.data;
+        },
+        updateHotDogState: function(hotDogsReponse) {
+            store.dispatch('executeSetHotDogs', hotDogsReponse.data);
         },
         sendForm: function() {
             axios.post(`${process.env.VUE_APP_API_BASE_URL}hot-dogs`,{
@@ -78,12 +84,23 @@ export default {
                 description: this.description,
                 spices: this.spicesSelected,
                 stuff: [this.stuffSelected]
-            });
+            }).then((hotDogsReponse) => this.updateHotDogState(hotDogsReponse));
         }
     },
     mounted: function() {
-        this.fetchStuff();
         this.fetchSpices();
-    }
+        this.fetchStuff();
+        store.watch(
+            (state) => state.hotDogsList,
+            (newHotDogs, oldHotDogs) => {
+                if(oldHotDogs.leght >= newHotDogs.leght){
+                    store.state.hotDogsList = oldHotDogs;
+                }
+            }
+        );
+    },
+    computed: {
+        ...mapState(['hotDogsList']),
+    },
 }
 </script>
