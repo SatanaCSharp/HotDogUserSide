@@ -16,55 +16,55 @@ Vue.use(Router);
 export default new Router({
     mode: 'history',
     routes: [
-    {
-        path: '/',
-        name: 'HotDogsList',
-        component: HotDogsList,
-    },
-    {
-        path: '/show/hot-dogs/:id',
-        name: 'HotDogShow',
-        component: HotDogShow,
-    },
-    {
-        path: '/create/hot-dogs/',
-        name: 'HotDogCreate',
-        component: HotDogCreate,
-    },
-    {
-        path: '/update/hot-dogs/:id',
-        name: 'HotDogUpdate',
-        component: HotDogUpdate,
-    },
-    {
-        path: '/stuff',
-        name: 'StuffList',
-        component: StuffList,
-    },
-    {
-        path: '/create/stuff',
-        name: 'StuffCreate',
-        component: StuffCreate,
-    },
-    {
-        path: '/update/stuff/:id',
-        name: 'StuffUpdate',
-        component: StuffUpdate,
-    },
-    {
-        path: '/spices',
-        name: 'SpicesList',
-        component: SpicesList,
-    },
-    {
-        path: '/create/spices',
-        name: 'SpicesCreate',
-        component: SpicesCreate,
-    },
-    {
-        path: '/update/spices/:id',
-        name: 'SpicesUpdate',
-        component: SpicesUpdate,
-    },
-  ]
+        {
+            path: '/',
+            name: 'HotDogsList',
+            component: HotDogsList,
+        },
+        {
+            path: '/show/hot-dogs/:id',
+            name: 'HotDogShow',
+            component: HotDogShow,
+        },
+        {
+            path: '/create/hot-dogs/',
+            name: 'HotDogCreate',
+            component: HotDogCreate,
+        },
+        {
+            path: '/update/hot-dogs/:id',
+            name: 'HotDogUpdate',
+            component: HotDogUpdate,
+        },
+        {
+            path: '/stuff',
+            name: 'StuffList',
+            component: StuffList,
+        },
+        {
+            path: '/create/stuff',
+            name: 'StuffCreate',
+            component: StuffCreate,
+        },
+        {
+            path: '/update/stuff/:id',
+            name: 'StuffUpdate',
+            component: StuffUpdate,
+        },
+        {
+            path: '/spices',
+            name: 'SpicesList',
+            component: SpicesList,
+        },
+        {
+            path: '/create/spices',
+            name: 'SpicesCreate',
+            component: SpicesCreate,
+        },
+        {
+            path: '/update/spices/:id',
+            name: 'SpicesUpdate',
+            component: SpicesUpdate,
+        },
+    ]
 });
