@@ -2,9 +2,10 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import App from './App.vue';
 import router from './routes/index';
+
 Vue.use(Vuex);
 Vue.config.productionTip = false;
 new Vue({
-  render: h => h(App),
-  router: router
+    render: h => h(App),
+    router: router
 }).$mount('#app');
